@@ -16,11 +16,11 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of the 6 major primitive types available in C++  here:
  
- 
- 
- 
- 
- 
+ void
+bool char
+ wide char
+int float
+ double
  
  
  
@@ -63,11 +63,34 @@ video: Chapter 2 - Part 3
 void variableDeclarations()
 {
     //example:
-    int number = 2; //declaration of a variable named "number", that uses the primitive type 'int', and the variable's initial value is '2'
+    int number = 2; //declaration of a variable named "number", that uses the primitive type
     
+    bool isBool = true;
+    bool isGoat = false;
+    bool isDog = true;
 
+    char firstInitial = 'a';
+    char middleInitial = 'b';
+    char lastInitial = 'c';
+
+    int numDogs = 1;
+    int numArms = 2;
+    int fartFrequency = 3;
+
+    float volume = 0.8f;
+    float level = 0.5f;
+    float preDelay = 200.f;
+
+    double balance = 2456.32;
+    double value = 65.8;
+    double x = 83462.421;
     
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    ignoreUnused( number,
+        isBool, isGoat, isDog, 
+        firstInitial, middleInitial,lastInitial,
+        numDogs, numArms, fartFrequency,
+        volume, level, preDelay,
+        balance, value, x); //passing each variable declared to the ignoreUnused() function
 }
 
 /*
@@ -78,49 +101,101 @@ void variableDeclarations()
 bool rentACar(int rentalDuration, int carType = 0)  //function declaration with random number of arguments, arbitrary number of arguments have default value
 { 
     ignoreUnused(rentalDuration, carType); //passing each function parameter to the ignoreUnused() function
-    return {}; //if your function returns something other than void, add 'return {};' at the end of it.
-} 
+    return {}; //if your function returns something other than void
+}
 
 /*
  1)
  */
+bool readyForRefresh()
+{
+    return {};
+}
 
 /*
  2)
  */
+bool identical(char a, char b = 'a')
+{
+    ignoreUnused(a, b);
+
+    return {};
+}
 
 /*
  3)
  */
+void drinkWater(int waterType = 1)
+{
+    ignoreUnused(waterType);
+}
 
 /*
  4)
  */
+int mix(int firstIngredientID, int secondIngredientID)
+{
+    ignoreUnused(firstIngredientID, secondIngredientID);
+
+    return {};
+}
 
 /*
  5)
  */
+int getFirstDigit(float num)
+{
+    ignoreUnused(num);
+
+    return {};
+}
 
 /*
  6)
  */
+float slowDivide(float dividend, float divisor)
+{
+    ignoreUnused(dividend, divisor);
+
+    return {};
+}
 
 /*
  7)
  */
+void doSomething(char something = 'z')
+{
+    ignoreUnused(something);
+}
 
 /*
  8)
  */
+void walkTurtle(float distanceInFeet)
+{
+    ignoreUnused(distanceInFeet);
+}
+
 
 /*
  9)
  */
+void dash(float x = 0, float y = 0)
+{
+    ignoreUnused(x, y);
+}
+ 
 
 /*
  10)
  */
+int getNumChocolateChips(int numCookies, int chipsPerCookie = 1)
+{
+    ignoreUnused(numCookies, chipsPerCookie);
 
+    return {};
+}
+    
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -141,27 +216,33 @@ int main()
     auto carRented = rentACar(6, 2); 
     
     //1)
-    
+    auto isReadyForRefresh = readyForRefresh();
     //2)
-    
+    auto isIdentical = identical('a', 'a');
     //3)
-    
+    drinkWater();
     //4)
-    
+    auto mixResult = mix(1, 5);
     //5)
-    
+    auto firstDigit = getFirstDigit(257.2f);
     //6)
-    
-    //7)
-    
+    auto quotient = slowDivide(42.3f, 8.f);
+    //7)    doSomething();
     //8)
-    
+    dash(10.f, 20.f);
     //9)
-    
+    walkTurtle(40.6f);
     //10)
+    auto numChocolateChips = getNumChocolateChips(12, 10);    
+
     
-    
-    ignoreUnused(carRented);
+    ignoreUnused(carRented, 
+        numChocolateChips,
+        isReadyForRefresh,
+        isIdentical,
+        mixResult,
+        firstDigit,
+        quotient);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
